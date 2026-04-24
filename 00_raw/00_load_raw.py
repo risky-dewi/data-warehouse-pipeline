@@ -1,15 +1,25 @@
 import pandas as pd
 from sqlalchemy import create_engine, inspect, text
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
-BASE_DIR = Path(__file__).resolve().parent
+load_dotenv()
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "Data"
 
-engine = create_engine("postgresql://postgres:PostgreSQL_1999@localhost:5432/ecommerce_practice")
+# validate that Data folder exists
+if not DATA_DIR.exists():
+    raise FileNotFoundError(f"Data folder not found: {DATA_DIR}")
+
+engine = create_engine(
+    f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@localhost:5432/ecommerce_practice"
+    )
 
 inspector = inspect(engine)
 
-# mapping file ke table
+# mapping files into table
 files = {
     "voucher1.csv": "voucher",
     "products1.csv": "products",
@@ -21,6 +31,13 @@ files = {
     "transactions_items1.csv": "transaction_items",
     "transactions1.csv": "transactions"
 }
+
+# ---validation step: validate all files exist before processing
+for file in files.keys():
+    file_path = DATA_DIR / file
+    if not file_path.exists():
+        raise FileNotFoundError(f"File not found: {file_path}")
+
 
 def transform(df, table):
     if table == "voucher":
