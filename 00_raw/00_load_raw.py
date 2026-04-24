@@ -32,42 +32,25 @@ files = {
     "transactions1.csv": "transactions"
 }
 
-# ---validation step: validate all files exist before processing
-for file in files.keys():
-    file_path = DATA_DIR / file
-    if not file_path.exists():
-        raise FileNotFoundError(f"File not found: {file_path}")
-
+column_map = {
+    "voucher": ["voucher_id", "voucher"],
+    "products": ["product_id", "product_name", "product_category"],
+    "locations": ["locations_id", "location"],
+    "payment_methods": ["payment_method_id", "payment_method"],
+    "users": ["user_id", "date", "locations_id", "age", "gender"],
+    "sessions": ["sessions_id", "user_id", "traffic_medium", "date", "traffic_source", "traffic_name"],
+    "events": ["sessions_id", "event_id", "event", "date"],
+    "transaction_items": ["transactions_id", "transaction_items_id", "product_id", "product_qty", "product_price", "product_amount"],
+    "transactions": ["transactions_id", "sessions_id", "payment_method_id", "total_amount", "transactions_timestamps", "status", "voucher_id"]
+}
 
 def transform(df, table):
-    if table == "voucher":
-        return df[["voucher_id", "voucher"]]
-
-    elif table == "products":
-        return df[["product_id", "product_name", "product_category"]]
-
-    elif table == "locations":
-        return df[["locations_id", "location"]]
-
-    elif table == "payment_methods":
-        return df[["payment_method_id", "payment_method"]]
-
-    elif table == "users":
-        return df[["user_id", "date", "locations_id", "age", "gender"]]
-
-    elif table == "sessions":
-        return df[["sessions_id", "user_id", "traffic_medium", "date", "traffic_source", "traffic_name"]]
-
-    elif table == "events":
-        return df[["sessions_id", "event_id", "event", "date"]]
-
-    elif table == "transaction_items":
-        return df[["transactions_id", "transaction_items_id", "product_id", "product_qty", "product_price", "product_amount"]]
-
-    elif table == "transactions":
-        return df[["transactions_id", "sessions_id", "payment_method_id", "total_amount", "transactions_timestamps", "status", "voucher_id"]]
-
-    return df
+    columns = column_map.get(table)
+    
+    if not columns:
+        raise ValueError(f"No column mapping defined for table: {table}")
+    
+    return df[columns]
 
 #-- validation step: number of row CVS vs PostgreSQL--
 def validate_row_count(conn, table, csv_count):
@@ -80,7 +63,7 @@ def validate_row_count(conn, table, csv_count):
         print(f"Validation OK : CSV {csv_count:,} rows = PostgreSQL {db_count:,} rows")
     else:
         raise ValueError(
-            f" Validation failed: CVS CSV {csv_count:,} rows != PostgreSQL {db_count:,} rows"
+            f" Validation failed: CSV CSV {csv_count:,} rows != PostgreSQL {db_count:,} rows"
         )
 
 #-- check all table that exist before loading --
