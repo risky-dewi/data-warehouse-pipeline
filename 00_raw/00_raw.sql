@@ -72,3 +72,6 @@ transactions_timestamps VARCHAR(50),
 status VARCHAR(20),
 voucher_id INTEGER
 );
+
+
+
