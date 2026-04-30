@@ -114,6 +114,6 @@ for file, table in files.items():
 
     print(f" {csv_count:,} line -> raw.{table} done.\n")
 
-print("=" * 50)
+print("=" * 55)
 print("All files uploaded.")
-print("=" * 50)
+print("=" * 55)
