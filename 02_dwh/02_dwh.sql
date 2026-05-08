@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS dw;
 
--- DIMENTION TABLES
+-- DIMENSION TABLES --
 -- dim_date
 DROP TABLE IF EXISTS dw.dim_date CASCADE;
 CREATE TABLE dw.dim_date AS
@@ -100,7 +100,7 @@ FROM (SELECT DISTINCT traffic_source, traffic_medium FROM staging.stg_sessions) 
 
 ALTER TABLE dw.dim_traffic ADD PRIMARY KEY (traffic_key);
 
---FACT TABLES
+--FACT TABLES --
 -- fact_sessions
 DROP TABLE IF EXISTS dw.fact_sessions CASCADE;
 
