@@ -23,13 +23,14 @@ ORDER BY d.year,d.month;
 -- PRODUCT
 -- MART 2 Product Performance
 -- Purpose: Monitor top and low selling products 
+
 CREATE OR REPLACE VIEW mart.product_performance AS
 SELECT
 	dp.product_category,
 	dp.product_name,
 	COUNT(DISTINCT fti.transaction_key) AS total_orders,
 	SUM(fti. product_qty) AS total_units_sold,
-	SUM(fti.product_amount) FILTER (WHERE status='completed') AS total_revenue,
+	COALESCE(SUM(fti.product_amount) FILTER (WHERE status='completed'), 0) AS total_revenue,
 	ROUND(AVG(fti.product_price),0) AS avg_price
 FROM dw.fact_transaction_items fti
 INNER JOIN dw.dim_product dp ON fti.product_key = dp.product_key
