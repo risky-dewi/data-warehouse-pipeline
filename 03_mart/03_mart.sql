@@ -51,6 +51,7 @@ SELECT
 FROM dw.fact_transactions ft 
 INNER JOIN dw.dim_user du ON ft.user_key = du.user_key
 WHERE ft.status = 'completed'
+	AND du.user_key <> -1
 GROUP BY du.age_group, du.gender, du.location
 ORDER BY total_revenue DESC;
 
