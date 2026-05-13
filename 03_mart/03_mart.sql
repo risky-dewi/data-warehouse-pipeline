@@ -208,5 +208,6 @@ SELECT
 	ROUND(SUM(ft.revenue)/NULLIF(COUNT(DISTINCT du.user_key), 0), 0) AS ltv_per_usr
 FROM dw.dim_user du
 LEFT JOIN dw.fact_transactions ft ON du.user_key = ft.user_key
+WHERE du.user_key <> -1
 GROUP BY DATE_TRUNC('month', du.registration_date)
 ORDER BY cohort_month;
