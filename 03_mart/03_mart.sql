@@ -73,6 +73,7 @@ WITH funnel_steps AS (
 		MAX(CASE WHEN event = 'complete' THEN 1 ELSE 0 END) AS did_complete,
 		MAX(CASE WHEN event = 'cancel' THEN 1 ELSE 0 END) AS did_cancel
 	FROM dw.fact_events fe
+	WHERE fe.user_key <> -1
 	GROUP BY session_key
 )
 SELECT
@@ -109,7 +110,7 @@ WITH funnel_steps AS (
 		MAX(CASE WHEN event = 'complete' THEN 1 ELSE 0 END) AS did_complete,
 		MAX(CASE WHEN event = 'cancel' THEN 1 ELSE 0 END) AS did_cancel
 	FROM dw.fact_events fe
-	INNER JOIN dw.fact_sessions fs ON fe.session_key = fs.session_key  
+	WHERE fe.user_key <>  -1
 	GROUP BY fe.session_key, fe.user_key
 )
 SELECT
