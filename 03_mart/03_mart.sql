@@ -1,8 +1,9 @@
 CREATE SCHEMA IF NOT EXISTS mart;
 
--- Management
 -- MART 1 Monthly Revenue and Order Summary
--- Purpose : Monitor revenue, growth and total order
+-- Departement: Management
+-- Purpose: Monitor monthly business performance, including total orders, completed orders, canceled orders, revenue, cancellation rate, and average order value.
+-- Business Use: Used for executive reporting, monthly performance review, revenue trend monitoring, and identifying months with high cancellation risk.
 
 CREATE OR REPLACE VIEW mart.monthly_revenue AS 
 SELECT
@@ -20,9 +21,10 @@ INNER JOIN dw.dim_date d ON ft.date_key = d.date_key
 GROUP BY d.year, d.month, d.month_name
 ORDER BY d.year,d.month;
 
--- PRODUCT
--- MART 2 Product Performance
--- Purpose: Monitor top and low selling products 
+-- MART 2: Product Performance
+-- Department: Product, Sales, Inventory
+-- Purpose: Measure product-level performance based on orders, units sold, completed-order revenue, and average product price.
+-- Business Use: Used to identify best-selling and low-performing products, evaluate product category contribution, and support assortment or inventory decisions.
 
 CREATE OR REPLACE VIEW mart.product_performance AS
 SELECT
@@ -38,7 +40,9 @@ GROUP BY dp.product_category, dp.product_name
 ORDER BY total_revenue DESC;
 
 -- MART 3: Customer Segmentation Summary
--- Purpose:
+-- Department: Management, Marketing, CRM
+-- Purpose: Summarize completed transaction performance by customer demographic segment, including age group, gender, and location.
+-- Business Use: Used to understand which customer segments generate the most revenue, compare order behavior across segments, and support targeting or personalization strategies.
 
 CREATE OR REPLACE VIEW mart.customer_segment AS 
 SELECT 
@@ -57,7 +61,10 @@ GROUP BY du.age_group, du.gender, du.location
 ORDER BY total_revenue DESC;
 
 -- MART 4: Funnel Analysis (Conversion Funnel)
--- Purpose:
+-- Department: Management, Marketing, UX
+-- Purpose: Track the overall ecommerce conversion funnel from product view to checkout and final outcomes such as completed or canceled sessions.
+-- Business Use: Used to identify drop-off points in the user journey, monitor checkout conversion, and evaluate where users fail to complete transactions.
+
 
 CREATE OR REPLACE VIEW mart.funnel_analysis AS
 WITH funnel_steps AS (
@@ -93,7 +100,9 @@ SELECT
 FROM funnel_steps;
 
 -- MART 5: Segmented Funnel Analysis (Conversion Funnel)
--- Purpose:
+-- Department: Management, Marketing, UX
+-- Purpose: Analyze funnel progression by customer segment using age group, gender, and location.
+-- Business Use: Used to compare conversion behavior across customer groups, identify high-friction segments, and support targeted UX, campaign, or checkout improvements.
 
 CREATE OR REPLACE VIEW mart.funnel_by_segment AS
 WITH funnel_steps AS (
@@ -136,7 +145,10 @@ GROUP BY du.age_group, du.gender, du.location;
 
 
 -- MART 6: Traffic Source Performance
--- Performance: 
+-- Department: Management, Marketing
+-- Purpose: Evaluate traffic source and medium performance based on users, sessions, transactions, revenue, and revenue per session.
+-- Business Use: Used to compare marketing channel quality, assess acquisition effectiveness, and prioritize traffic sources that generate higher revenue per session.
+
 
 CREATE OR REPLACE VIEW mart.traffic_performance AS
 WITH trx AS (
@@ -164,7 +176,9 @@ GROUP BY dt.traffic_source, dt.traffic_medium
 ORDER BY total_revenue DESC;
 
 -- MART 7: Voucher Usage Impact
--- Performance: 
+-- Department: Marketing, Promotion, CRM, Finance, Sales
+-- Purpose: Measure order performance by voucher type, including completed orders, revenue, average order value, and cancellation rate.
+-- Business Use: Used to evaluate whether voucher campaigns drive completed revenue, increase order value, or create higher cancellation risk.
 
 CREATE OR REPLACE VIEW mart.voucher_impact AS 
 SELECT
@@ -180,7 +194,9 @@ GROUP BY dv.voucher_type
 ORDER BY total_revenue DESC;
 
 -- MART 8: Payment Method Preference
--- Performance: 
+-- Department: Finance, Product
+-- Purpose: Analyze completed orders and revenue contribution by payment method, including order share and revenue share.
+-- Business Use: Used to understand preferred payment methods, monitor payment mix, and support payment partnership or checkout optimization decisions.
 
 CREATE OR REPLACE VIEW mart.payment_preference AS
 SELECT
@@ -198,7 +214,9 @@ GROUP BY dpm.payment_method
 ORDER BY total_orders DESC;
 
 -- MART 9: User Cohort (by Registration Month)
--- Performance: 
+-- Department: Management, CRM, Marketing
+-- Purpose: Group users by registration month and summarize their order activity, revenue, and lifetime value proxy.
+-- Business Use: Used to monitor user cohort quality, compare revenue contribution by registration period, and support retention or lifecycle marketing analysis.
 
 CREATE OR REPLACE VIEW mart.user_cohort AS 
 SELECT
