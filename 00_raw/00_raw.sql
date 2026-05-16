@@ -1,4 +1,6 @@
-	--Drop and recreate if needed
+CREATE SCHEMA IF NOT EXISTS raw;
+
+--Drop and recreate if needed
 DROP TABLE IF EXISTS raw.voucher            CASCADE;
 DROP TABLE IF EXISTS raw.products           CASCADE;
 DROP TABLE IF EXISTS raw.locations          CASCADE;
