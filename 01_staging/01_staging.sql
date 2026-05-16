@@ -55,7 +55,7 @@ SELECT
 	CASE
 		WHEN age BETWEEN 10 AND 17 THEN 'Gen Z (Teen)'
 		WHEN age BETWEEN 18 AND 24 THEN 'Gen Z (Adult)'
-		WHEN age BETWEEN 25 AND 40 THEN 'Millennila'
+		WHEN age BETWEEN 25 AND 40 THEN 'Millennial'
 		WHEN age BETWEEN 41 AND 56 THEN 'Gen X'
 		WHEN age >= 57 THEN 'Boomer'
 		ELSE 'Unknown'
