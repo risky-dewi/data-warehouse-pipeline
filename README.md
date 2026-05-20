@@ -89,5 +89,4 @@ Data Mart Layer
    ↓
 Business Analysis
 ```
-<img width="1672" height="941" alt="data_architecture" src="https://github.com/user-attachments/assets/6fe0227e-ba5e-4ef9-9bc9-5a63c68d2e60" />
 
