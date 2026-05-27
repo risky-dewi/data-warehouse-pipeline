@@ -93,6 +93,7 @@ Data Mart Layer
 
 Recommended project structure:
 
+```text
 ecommerce-dwh/
 │
 ├── sql/
@@ -137,6 +138,7 @@ ecommerce-dwh/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
@@ -158,7 +160,7 @@ The pipeline is designed to run sequentially because each layer depends on the p
 
 ## Data Integration
 The data integration connects customer, behavioral, transactional, product, payment, voucher, traffic, and date data into one analytical model.
-
+```text
 locations 1 ──< users 1 ──< sessions 1 ──< events
                          │
                          └──< transactions 1 ──< transaction_items >── 1 products
@@ -167,7 +169,7 @@ transactions >── 1 payment_methods
 transactions >── 1 voucher
 sessions     >── 1 traffic
 facts        >── 1 dim_date
-
+```
 ---
 
 ## Data Model
