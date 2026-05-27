@@ -120,19 +120,8 @@ ecommerce-dwh/
 │   ├── run_sql.py
 │   └── run_pipeline.py
 │
-├── docs/
-│   ├── data_dictionary.md
-│   ├── data_model.md
-│   ├── data_quality.md
-│   └── pipeline_flow.md
-│
-├── diagrams/
-│   ├── data_architecture.png
-│   ├── data_integration.png
-│   └── star_schema.png
-│
 ├── sample_data/
-│   └── README.md
+│   
 │
 ├── .env.example
 ├── .gitignore
