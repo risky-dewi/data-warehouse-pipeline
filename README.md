@@ -86,7 +86,52 @@ Staging Layer
 Data Warehouse Layer
    ↓
 Data Mart Layer
-   ↓
-Business Analysis
-```
+---
 
+## Project Structure
+
+Recommended project structure:
+ecommerce-dwh/
+│
+├── sql/
+│   ├── 00_raw/
+│   │   └── 00_raw.sql
+│   │
+│   ├── 01_staging/
+│   │   └── 01_staging.sql
+│   │
+│   ├── 02_dwh/
+│   │   └── 02_dwh.sql
+│   │
+│   ├── 03_mart/
+│   │   └── 03_mart.sql
+│   │
+│   └── 04_data_quality/
+│       ├── 01_check_after_raw.sql
+│       ├── 02_check_after_staging.sql
+│       ├── 03_check_after_dwh.sql
+│       └── 04_final_data_quality.sql
+│
+├── scripts/
+│   ├── load_raw.py
+│   ├── run_sql.py
+│   └── run_pipeline.py
+│
+├── docs/
+│   ├── data_dictionary.md
+│   ├── data_model.md
+│   ├── data_quality.md
+│   └── pipeline_flow.md
+│
+├── diagrams/
+│   ├── data_architecture.png
+│   ├── data_integration.png
+│   └── star_schema.png
+│
+├── sample_data/
+│   └── README.md
+│
+├── .env.example
+├── .gitignore
+├── requirements.txt
+└── README.md
