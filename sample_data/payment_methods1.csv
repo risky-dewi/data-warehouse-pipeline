@@ -1,0 +1,7 @@
+payment_method,payment_method_id
+Biller Services,1
+Credit Card,2
+Debit,3
+E-Wallet,4
+Paylater,5
+Virtual Account,6

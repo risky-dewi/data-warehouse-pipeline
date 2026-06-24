@@ -1,0 +1,67 @@
+product_category,product_name,product_id
+Clothing,Clothing A,1
+Clothing,Clothing B,2
+Clothing,Clothing C,3
+Clothing,Clothing D,4
+Clothing,Clothing E,5
+Clothing,Clothing F,6
+Clothing,Clothing G,7
+Clothing,Clothing H,8
+Clothing,Clothing I,9
+Electronics,Electronics A,10
+Electronics,Electronics B,11
+Electronics,Electronics C,12
+Electronics,Electronics D,13
+Electronics,Electronics E,14
+Electronics,Electronics F,15
+Games,Games A,16
+Games,Games B,17
+Games,Games C,18
+Games,Games D,19
+Games,Games E,20
+Games,Games F,21
+Groceries,Groceries A,22
+Groceries,Groceries B,23
+Groceries,Groceries C,24
+Groceries,Groceries D,25
+Groceries,Groceries E,26
+Groceries,Groceries F,27
+Groceries,Groceries G,28
+Groceries,Groceries H,29
+Groceries,Groceries I,30
+Health&Beauty,Health&Beauty A,31
+Health&Beauty,Health&Beauty B,32
+Health&Beauty,Health&Beauty C,33
+Health&Beauty,Health&Beauty D,34
+Health&Beauty,Health&Beauty E,35
+Health&Beauty,Health&Beauty F,36
+Hobbies,Hobbies A,37
+Hobbies,Hobbies B,38
+Hobbies,Hobbies C,39
+Hobbies,Hobbies D,40
+Hobbies,Hobbies E,41
+Hobbies,Hobbies F,42
+Mother&Care,Mother&Care A,43
+Mother&Care,Mother&Care B,44
+Mother&Care,Mother&Care C,45
+Mother&Care,Mother&Care D,46
+Mother&Care,Mother&Care E,47
+Mother&Care,Mother&Care F,48
+Shoes,Shoes A,49
+Shoes,Shoes B,50
+Shoes,Shoes C,51
+Shoes,Shoes D,52
+Shoes,Shoes E,53
+Shoes,Shoes F,54
+Sport Equipment,Sport Equipment A,55
+Sport Equipment,Sport Equipment B,56
+Sport Equipment,Sport Equipment C,57
+Sport Equipment,Sport Equipment D,58
+Sport Equipment,Sport Equipment E,59
+Sport Equipment,Sport Equipment F,60
+Stationery,Stationery A,61
+Stationery,Stationery B,62
+Stationery,Stationery C,63
+Stationery,Stationery D,64
+Stationery,Stationery E,65
+Stationery,Stationery F,66
