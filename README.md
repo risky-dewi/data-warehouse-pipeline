@@ -120,9 +120,9 @@ ecommerce-dwh/
 │   ├── run_sql.py
 │   └── run_pipeline.py
 │
-├── sample_data/
+├── sample_data/                            # raw CSV source files
 │   
-│── diagrams/
+│── diagrams/                               # architecture diagram
 │
 │
 ├── .env.example
