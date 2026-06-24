@@ -122,6 +122,8 @@ ecommerce-dwh/
 │
 ├── sample_data/
 │   
+│── diagrams/
+│
 │
 ├── .env.example
 ├── .gitignore
