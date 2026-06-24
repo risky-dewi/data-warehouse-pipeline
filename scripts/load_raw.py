@@ -4,6 +4,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 DB_USER = os.getenv("DB_USER")
@@ -16,8 +17,7 @@ engine = create_engine(
     f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 )
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data"
+DATA_DIR = BASE_DIR / "sample_data"
 
 # validate that Data folder exists
 if not DATA_DIR.exists():
