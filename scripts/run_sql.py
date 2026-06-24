@@ -3,6 +3,7 @@ from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 import os
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 DB_USER = os.getenv("DB_USER")
@@ -15,8 +16,7 @@ engine = create_engine(
     f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 )
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-SQL_DIR = BASE_DIR / "Sql"
+SQL_DIR = BASE_DIR / "sql"
 
 def run_sql_file(filename):
     path = SQL_DIR / filename
