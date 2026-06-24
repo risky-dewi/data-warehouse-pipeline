@@ -194,11 +194,12 @@ Instead of using only one fact table, this project models multiple business proc
 ## How to Run This Project
 
 1. Clone Repository
-2. Create Virtual Environment
-3. Install Dependencies
+2. Create a Virtual Environment
+3. Install dependencies
 4. Configure Environment Variables
-5. Prepare PostgreSQL Database
- Create a PostgreSQL database:
+5. Copy `.env.example` into `.env`
+6. Update database credentials in `.env`
+7. Create a PostgreSQL database in PostgreSQL:
 ```sql
 CREATE DATABASE ecommerce_practice;
 ```
