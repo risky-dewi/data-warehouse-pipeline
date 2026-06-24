@@ -1,3 +1,4 @@
+.vscode/
 venv312/
 Data/
 *.pyc
